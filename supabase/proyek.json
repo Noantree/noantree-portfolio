@@ -1,0 +1,5 @@
+{
+  "_catatan": "Reference ID proyek Supabase per lingkungan (20 huruf kecil), dipakai scripts/db.mjs. Isi dengan proyek Supabase milikmu sendiri. Jangan menaruh kunci atau password di sini.",
+  "produksi": "ISI_REF_PROYEK_PRODUKSI",
+  "staging": "ISI_REF_PROYEK_STAGING"
+}

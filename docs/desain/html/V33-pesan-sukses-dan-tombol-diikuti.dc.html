@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Pesan sukses dan tombol diikuti</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button[style^="height"]:not([disabled]):not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="#1F5FE6"]):not([style*="rgba(255,255,255"]),a[style^="height"]:not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="background: #1F5FE6"]),a[aria-label][style^="width: 4"]:not([aria-label="Akun saya"]){box-shadow:0 1px 2px rgba(18,22,31,.10),0 0 0 .5px rgba(18,22,31,.06)}
+a{color:#1A4FC2}a:hover{color:#12161F}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; color: #12161F; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 14px; padding: 20px 16px;">
+<span style="font-size: 13px; font-weight: 700; color: #5B6472;">Tombol ikuti: sebelum dan sesudah</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;">
+<button style="height: 52px; border: 0; border-radius: 26px; background: #EAF1FE; color: #1A4FC2; font-family: inherit; font-size: 15px; font-weight: 700;">+ Ikuti lapak ini</button>
+<button aria-pressed="true" style="height: 52px; border: 0; border-radius: 26px; background: #F4F6FA; color: #12161F; font-family: inherit; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E7A4F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Diikuti</button>
+</div>
+<span style="font-size: 12px; color: #5B6472; line-height: 1.5;">Ketuk “Diikuti” untuk berhenti mengikuti, lalu muncul pesan Batalkan.</span>
+<span style="font-size: 13px; font-weight: 700; color: #5B6472; margin-top: 10px;">Pesan singkat di bawah layar (hilang sendiri 5 detik)</span>
+<sc-for list="{{pesan}}" as="p" hint-placeholder-count="5">
+<div role="status" style="border-radius: 18px; background: {{p.bg}}; box-shadow: inset 0 0 0 1.5px {{p.garis}}; color: {{p.tinta}}; min-height: 56px; padding: 0 8px 0 18px; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+<span style="font-size: 14px; font-weight: 600; line-height: 1.35; padding: 10px 0;">{{p.teks}}</span>
+<sc-if value="{{p.aksi}}" hint-placeholder-val="{{ true }}"><button style="height: 40px; padding: 0 14px; border: 0; border-radius: 20px; background: #FFFFFF; color: {{p.aksen}}; font-family: inherit; font-size: 13px; font-weight: 700; white-space: nowrap;">{{p.aksi}}</button></sc-if>
+</div>
+</sc-for>
+<span style="font-size: 12px; color: #5B6472; line-height: 1.5; margin-top: 4px;">Warna mengikuti jenis pesan: biru = info/ikuti, abu = netral, hijau = berhasil, oranye = habis, merah = disembunyikan atau dihapus. Satu pesan tampil dalam satu waktu. Setelah masuk dengan Google, aksi yang tadi dipilih (ikuti atau lapor) langsung dijalankan tanpa perlu diketuk ulang.</span>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return { pesan: [
+{ teks: 'Kamu mengikuti Bakso Pak Slamet', aksi: 'Lihat', bg: '#EAF1FE', garis: '#C9DAFB', tinta: '#12306E', aksen: '#1A4FC2' },
+{ teks: 'Berhenti mengikuti Es Dawet Bu Sri', aksi: 'Batalkan', bg: '#EEF0F4', garis: '#D5DAE2', tinta: '#12161F', aksen: '#12161F' },
+{ teks: 'Laporan terkirim. Terima kasih sudah membantu.', aksi: '', bg: '#E4F5EC', garis: '#BFE6D1', tinta: '#0B5E3D', aksen: '#0E7A4F' },
+{ teks: 'Status diubah ke Habis', aksi: 'Batalkan', bg: '#FDEEDF', garis: '#F5C79B', tinta: '#7A3A08', aksen: '#A8500C' },
+{ teks: 'Lapak disembunyikan', aksi: 'Batalkan', bg: '#FDECEA', garis: '#F5C2BC', tinta: '#7A1A12', aksen: '#B42318' }
+] };
+}
+}
+</script>
+</body>
+</html>

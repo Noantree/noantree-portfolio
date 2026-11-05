@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Ubah jadwal</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button[style^="height"]:not([disabled]):not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="#1F5FE6"]):not([style*="rgba(255,255,255"]),a[style^="height"]:not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="background: #1F5FE6"]),a[aria-label][style^="width: 4"]:not([aria-label="Akun saya"]){box-shadow:0 1px 2px rgba(18,22,31,.10),0 0 0 .5px rgba(18,22,31,.06)}
+a{color:#1A4FC2}a:hover{color:#12161F}
+</style>
+</helmet>
+<div style="width: 390px; height: 900px; box-sizing: border-box; background: #FFFFFF; color: #12161F; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 14px; padding: 0 16px 24px;">
+<div style="height: 64px; display: flex; align-items: center; gap: 12px;">
+<a href="Visual-AkunPemilik.dc.html" aria-label="Kembali" style="width: 44px; height: 44px; border-radius: 22px; background: #F4F6FA; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#12161F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<span style="font-size: 20px; font-weight: 700;">Ubah jadwal</span>
+</div>
+<span style="font-size: 14px; color: #5B6472; line-height: 1.5;">Status otomatis berakhir di akhir jadwal dan bisa diperpanjang sampai 8 jam. Perubahan berlaku mulai sesi berikutnya.</span>
+<div style="border-radius: 20px; background: #F4F6FA; padding: 4px 14px; display: flex; flex-direction: column;">
+<sc-for list="{{hari}}" as="h" hint-placeholder-count="7">
+<div style="display: flex; align-items: center; gap: 10px; min-height: 50px;">
+<label style="display: flex; align-items: center; gap: 10px; width: 96px; font-size: 15px; font-weight: 600;"><input type="checkbox" checked="{{h.aktif}}" style="width: 20px; height: 20px; accent-color: #1F5FE6;">{{h.nama}}</label>
+<span style="flex-grow: 1; font-size: 14px; color: {{h.warna}}; font-variant-numeric: tabular-nums;">{{h.jam}}</span>
+<button aria-label="Tambah sesi {{h.nama}}" style="height: 34px; padding: 0 12px; border: 0; border-radius: 17px; background: #FFFFFF; color: #1A4FC2; font-family: inherit; font-size: 13px; font-weight: 700;">+ Sesi</button>
+</div>
+</sc-for>
+</div>
+<button style="align-self: flex-start; height: 40px; padding: 0 16px; border: 0; border-radius: 20px; background: #EAF1FE; color: #1A4FC2; font-family: inherit; font-size: 14px; font-weight: 700;">Samakan jam Senin ke semua hari aktif</button>
+<div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
+<a href="Visual-AkunPemilik.dc.html" style="height: 56px; border-radius: 28px; background: #1F5FE6; color: #FFFFFF; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 16px; font-weight: 700;">Simpan perubahan</a>
+<button style="height: 48px; border: 0; border-radius: 24px; background: transparent; color: #12161F; font-family: inherit; font-size: 15px; font-weight: 600;">Hapus jadwal, jualan saya tidak tetap</button>
+<span style="font-size: 12px; color: #5B6472; text-align: center; line-height: 1.5;">Tanpa jadwal, status berakhir 4 jam setelah Mulai buka dan tidak ada “Biasanya buka”.</span>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+const on = (nama, jam) => ({ nama, jam, aktif: true, warna: '#12161F' });
+const off = (nama) => ({ nama, jam: 'Libur', aktif: false, warna: '#5B6472' });
+return { hari: [on('Senin', '06.00–14.00'), on('Selasa', '06.00–14.00'), on('Rabu', '06.00–14.00'), on('Kamis', '06.00–14.00'), on('Jumat', '06.00–14.00'), on('Sabtu', '06.00–14.00'), off('Minggu')] };
+}
+}
+</script>
+</body>
+</html>

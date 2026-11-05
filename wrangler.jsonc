@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "noantree",
+  "compatibility_date": "2026-10-01",
+  // Worker hanya untuk pratinjau link halaman lapak (S6.2); berkas lain langsung dari static assets
+  "main": "worker/index.ts",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    // Worker dijalankan dulu hanya untuk alamat satu tingkat tanpa titik (calon slug). Beranda, berkas build,
+    // dan rute aplikasi dengan subalamat langsung dilayani static assets.
+    "run_worker_first": ["/*", "!/", "!/assets/*", "!/*.*", "!/*/*"]
+  },
+  "previews": {},
+  "env": {
+    // Staging: Worker noantree-staging (branch staging, https://staging.noantree.id), dengan database Supabase sendiri.
+    // Dideploy dengan `npx wrangler deploy --env staging`; pratinjau per branch dengan `npx wrangler preview --env staging`.
+    // Kodenya sama dengan produksi; yang berbeda hanya variabel build di Cloudflare (alamat Supabase, kunci anon,
+    // VITE_SITUS_URL, VITE_LINGKUNGAN). Domain staging.noantree.id dipasang di dashboard, bukan di sini.
+    // main, compatibility_date, dan assets diwarisi dari atas (diperiksa dengan wrangler 4.156.1).
+    "staging": {
+      "previews": {}
+    }
+  }
+}

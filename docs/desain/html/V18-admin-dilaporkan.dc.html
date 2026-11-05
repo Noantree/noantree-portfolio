@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Admin, laporan</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button[style^="height"]:not([disabled]):not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="#1F5FE6"]):not([style*="rgba(255,255,255"]),a[style^="height"]:not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="background: #1F5FE6"]),a[aria-label][style^="width: 4"]:not([aria-label="Akun saya"]){box-shadow:0 1px 2px rgba(18,22,31,.10),0 0 0 .5px rgba(18,22,31,.06)}
+a{color:#1A4FC2}a:hover{color:#12161F}
+</style>
+</helmet>
+<div style="width: 390px; height: 1000px; box-sizing: border-box; background: #FFFFFF; color: #12161F; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 14px; padding: 0 16px 24px;">
+<div style="height: 64px; display: flex; align-items: center; gap: 10px;">
+<img src="/_blob/9d8f4b36fc58994b6648df95a114a0bf" alt="" width="32" height="32" style="width: 32px; height: 32px; border-radius: 9px;">
+<span style="font-size: 20px; font-weight: 800; letter-spacing: -0.03em;">Admin</span>
+</div>
+<div style="display: flex; gap: 8px; overflow: hidden;">
+<a href="Visual-AdminLapor.dc.html" style="height: 38px; padding: 0 14px; border-radius: 19px; background: #12161F; color: #FFFFFF; display: flex; align-items: center; text-decoration: none; font-size: 13px; font-weight: 600; white-space: nowrap;">Dilaporkan · 2</a>
+<a href="Visual-AdminSemua.dc.html" style="height: 38px; padding: 0 14px; border-radius: 19px; background: #F4F6FA; color: #12161F; display: flex; align-items: center; text-decoration: none; font-size: 13px; font-weight: 600; white-space: nowrap;">Semua lapak</a>
+<a href="Visual-AdminSembunyi.dc.html" style="height: 38px; padding: 0 14px; border-radius: 19px; background: #F4F6FA; color: #12161F; display: flex; align-items: center; text-decoration: none; font-size: 13px; font-weight: 600; white-space: nowrap;">Disembunyikan · 1</a>
+</div>
+<span style="font-size: 13px; color: #5B6472;">Laporan dari pelanggan, terbanyak di atas.</span>
+<sc-for list="{{laporan}}" as="r" hint-placeholder-count="2">
+<div style="border-radius: 22px; background: #F4F6FA; padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+<div style="display: flex; gap: 12px; align-items: center;">
+<div style="width: 44px; height: 44px; flex-shrink: 0; border-radius: 22px; background: {{r.warna}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800;">{{r.inisial}}</div>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+<span style="font-size: 16px; font-weight: 700;">{{r.nama}}</span>
+<span style="font-size: 12px; color: #5B6472;">{{r.info}}</span>
+</div>
+<span style="height: 28px; padding: 0 12px; border-radius: 14px; background: #FDECEA; color: #9B1C12; display: flex; align-items: center; font-size: 13px; font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums;">{{r.jumlah}}</span>
+</div>
+<div style="border-radius: 16px; background: #FFFFFF; padding: 12px 14px; display: flex; flex-direction: column; gap: 10px;">
+<sc-for list="{{r.alasan}}" as="a" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; gap: 2px;">
+<span style="font-size: 14px; font-weight: 700;">{{a.jenis}}</span>
+<span style="font-size: 13px; color: #5B6472;">{{a.catatan}}</span>
+</div>
+</sc-for>
+</div>
+<a href="Visual-Detail.dc.html" style="align-self: flex-start; font-size: 13px; font-weight: 600; min-height: 32px; display: flex; align-items: center;">Lihat halaman lapak</a>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;">
+<button style="height: 46px; border: 0; border-radius: 23px; background: #FFFFFF; color: #12161F; box-shadow: 0 1px 2px rgba(18,22,31,0.10), 0 0 0 0.5px rgba(18,22,31,0.06); font-family: inherit; font-size: 14px; font-weight: 700;">Abaikan</button>
+<button style="height: 46px; border: 0; border-radius: 23px; background: #FDECEA; color: #B42318; box-shadow: 0 1px 2px rgba(180,35,24,0.18), 0 0 0 0.5px rgba(180,35,24,0.10); font-family: inherit; font-size: 14px; font-weight: 700;">Sembunyikan</button>
+</div>
+</div>
+</sc-for>
+<span style="font-size: 12px; color: #5B6472; line-height: 1.5;">Sembunyikan: hilang dari publik, data tetap, bisa ditampilkan lagi. Pemilik lapak diberi tahu di aplikasi dan email.</span>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1000}}'>
+class Component extends DCLogic {
+renderVals() {
+return { laporan: [
+{ nama: 'aaaa', inisial: 'AA', warna: '#3D4A5F', info: 'Daftar 25 Okt · Sukoharjo', jumlah: '3 laporan', alasan: [
+{ jenis: 'Lapak tidak ada / akun iseng', catatan: '2 pelapor · “Isinya cuma test”' },
+{ jenis: 'Konten tidak pantas', catatan: '1 pelapor · tanpa catatan' }
+] },
+{ nama: 'Cilok Mas Bayu', inisial: 'CB', warna: '#7A4E2D', info: 'Daftar 12 Okt · Sragen', jumlah: '1 laporan', alasan: [
+{ jenis: 'Status tidak sesuai', catatan: '1 pelapor · “Katanya lagi buka, tapi tidak ada di tempat”' }
+] }
+] };
+}
+}
+</script>
+</body>
+</html>

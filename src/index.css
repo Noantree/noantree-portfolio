@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --color-brand: #1F5FE6;
+  --color-brand-tekan: #1A4FC2;
+  --color-brand-muda: #EAF1FE;
+  --color-tinta: #12161F;
+  --color-teks-redup: #5B6472;
+  --color-kartu: #F4F6FA;
+  --color-buka: #16A86A;
+  --color-habis: #F08A24;
+  --color-tutup: #8A93A1;
+  --color-merah: #B42318;
+}
+
+body {
+  background: #FFFFFF;
+  color: var(--color-tinta);
+}
+
+/* Kerangka memuat (V20): muncul pelan setelah jeda, supaya muatan yang cepat tidak berkedip */
+@keyframes muncul {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[muncul_150ms_ease-out_200ms_both\] {
+    animation: none;
+  }
+}
+
+/* Cetak QR gerobak (V26, A49): hanya kartu, ukuran A6 tanpa tepi */
+@media print {
+  @page {
+    size: A6;
+    margin: 0;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .kartu-cetak,
+  .kartu-cetak * {
+    visibility: visible;
+  }
+  .kartu-cetak {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 105mm;
+    height: 148mm;
+    aspect-ratio: auto;
+    border-radius: 0;
+    /* Tanpa ini peramban membuang warna latar saat mencetak, dan pita biru jadi putih */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

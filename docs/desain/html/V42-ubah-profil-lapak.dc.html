@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Ubah profil lapak</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button[style^="height"]:not([disabled]):not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="#1F5FE6"]):not([style*="rgba(255,255,255"]),a[style^="height"]:not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="background: #1F5FE6"]),a[aria-label][style^="width: 4"]:not([aria-label="Akun saya"]){box-shadow:0 1px 2px rgba(18,22,31,.10),0 0 0 .5px rgba(18,22,31,.06)}
+a{color:#1A4FC2}a:hover{color:#12161F}
+</style>
+</helmet>
+<div style="width: 390px; height: 980px; box-sizing: border-box; background: #FFFFFF; color: #12161F; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 18px; padding: 0 16px 24px;">
+<div style="height: 64px; display: flex; align-items: center; gap: 12px;">
+<a href="Visual-AkunPemilik.dc.html" aria-label="Kembali" style="width: 44px; height: 44px; border-radius: 22px; background: #F4F6FA; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#12161F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<span style="font-size: 20px; font-weight: 700;">Ubah profil</span>
+</div>
+<div style="display: flex; gap: 16px; align-items: center;">
+<div style="width: 80px; height: 80px; flex-shrink: 0; border-radius: 40px; background: #1F5FE6; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 800;">BS</div>
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<button style="height: 44px; padding: 0 18px; border: 0; border-radius: 22px; background: #EAF1FE; color: #1A4FC2; font-family: inherit; font-size: 14px; font-weight: 700;">Ganti foto</button>
+<span style="font-size: 13px; color: #5B6472;">Maks. 500 KB, otomatis dikecilkan.</span>
+</div>
+</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700;">Nama lapak
+<input type="text" name="nama_lapak" autocomplete="off" value="Bakso Pak Slamet" style="height: 52px; border: 0; border-radius: 16px; background: #F4F6FA; padding: 0 16px; font-family: inherit; font-size: 16px; font-weight: 400;">
+<span style="font-size: 12px; font-weight: 500; color: #5B6472;">Link lapak tetap noantree.id/bakso-pak-slamet, jadi QR yang sudah dicetak tetap jalan.</span>
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700;">Jual atau layani apa?
+<textarea name="deskripsi" rows="3" autocomplete="off" style="border: 0; border-radius: 16px; background: #F4F6FA; padding: 14px 16px; font-family: inherit; font-size: 16px; font-weight: 400; line-height: 1.5; resize: none;">Bakso urat 12 rb, bakso telur 13 rb, mie ayam 10 rb. Bisa bungkus, kuah dipisah.</textarea>
+<span style="font-size: 12px; font-weight: 500; color: #5B6472;">Menu, harga, atau keterangan. Teks biasa, tanpa link.</span>
+</label>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<span style="font-size: 14px; font-weight: 700;">Foto lapak <span style="font-weight: 500; color: #5B6472;">2 dari 4</span></span>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+<div style="height: 76px; border-radius: 16px; background: #D5DAE2; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #3D4A5F;">[Foto 1]</div>
+<div style="height: 76px; border-radius: 16px; background: #D5DAE2; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #3D4A5F;">[Foto 2]</div>
+<button aria-label="Tambah foto" style="height: 76px; border: 0; border-radius: 16px; background: #EAF1FE; color: #1F5FE6; font-family: inherit; font-size: 26px; font-weight: 600;">+</button>
+<div style="height: 76px; border-radius: 16px; background: #F4F6FA;"></div>
+</div>
+<span style="font-size: 12px; color: #5B6472;">Ketuk foto untuk mengganti atau menghapus.</span>
+</div>
+<button style="margin-top: auto; height: 56px; border: 0; border-radius: 28px; background: #1F5FE6; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 700;">Simpan perubahan</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":980}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

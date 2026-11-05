@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Varian kartu status di detail lapak</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button[style^="height"]:not([disabled]):not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="#1F5FE6"]):not([style*="rgba(255,255,255"]),a[style^="height"]:not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="background: #1F5FE6"]),a[aria-label][style^="width: 4"]:not([aria-label="Akun saya"]){box-shadow:0 1px 2px rgba(18,22,31,.10),0 0 0 .5px rgba(18,22,31,.06)}
+a{color:#1A4FC2}a:hover{color:#12161F}
+</style>
+</helmet>
+<div style="width: 390px; height: 760px; box-sizing: border-box; background: #FFFFFF; color: #12161F; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 14px; padding: 20px 16px;">
+<span style="font-size: 13px; font-weight: 700; color: #5B6472;">Habis: masih di tempat, stok habis</span>
+<div style="border-radius: 24px; background: #FDEEDF; padding: 18px; display: flex; flex-direction: column; gap: 6px;">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 800; color: #A8500C;"><span style="width: 10px; height: 10px; border-radius: 5px; background: #F08A24;"></span>Habis sejak 13.20</span>
+<span style="font-size: 20px; font-weight: 700; letter-spacing: -0.01em; margin-top: 4px;">Depan Pasar Sragen</span>
+<span style="font-size: 13px; color: #6B4A2F;">Stok sudah habis. Coba lagi besok, atau ikuti lapak ini.</span>
+<a href="Visual-Masuk.dc.html" style="margin-top: 10px; height: 48px; border-radius: 24px; background: #FFFFFF; color: #1A4FC2; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 15px; font-weight: 700;">+ Ikuti lapak ini</a>
+</div>
+<span style="font-size: 13px; font-weight: 700; color: #5B6472; margin-top: 10px;">Tutup, dengan jadwal</span>
+<div style="border-radius: 24px; background: #F4F6FA; padding: 18px; display: flex; flex-direction: column; gap: 6px;">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 800; color: #5B6472;"><span style="width: 10px; height: 10px; border-radius: 5px; box-shadow: inset 0 0 0 2px #8A93A1;"></span>Tutup</span>
+<span style="font-size: 20px; font-weight: 700; letter-spacing: -0.01em; margin-top: 4px;">Buka lagi besok 06.00</span>
+<span style="font-size: 13px; color: #5B6472;">Sesuai jadwal · terakhir buka kemarin di Depan Pasar Sragen</span>
+</div>
+<span style="font-size: 13px; font-weight: 700; color: #5B6472; margin-top: 10px;">Tutup, tanpa jadwal</span>
+<div style="border-radius: 24px; background: #F4F6FA; padding: 18px; display: flex; flex-direction: column; gap: 6px;">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 800; color: #5B6472;"><span style="width: 10px; height: 10px; border-radius: 5px; box-shadow: inset 0 0 0 2px #8A93A1;"></span>Tutup</span>
+<span style="font-size: 20px; font-weight: 700; letter-spacing: -0.01em; margin-top: 4px;">Jadwal tidak tetap</span>
+<span style="font-size: 13px; color: #5B6472;">Terakhir buka 3 hari lalu. Ikuti supaya tahu saat buka lagi.</span>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":760}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Detail laporan admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Satu kolom untuk layar HP. Warna dan jarak mengikuti V18 (admin) dan token noantree. */
+:root {
+  --bg: #FFFFFF;
+  --kartu: #F4F6FA;
+  --fg: #12161F;
+  --redup: #5B6472;
+  --merah: #B42318;
+  --merah-muda: #FDECEA;
+  --merah-teks: #9B1C12;
+  --hijau-muda: #E4F5EC;
+  --hijau-teks: #0B5E3D;
+  --netral-muda: #EEF0F4;
+  --bayangan: 0 1px 2px rgba(18,22,31,.10), 0 0 0 .5px rgba(18,22,31,.06);
+  color-scheme: light;
+}
+html, body { min-height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 180px; /* ruang untuk bilah aksi tetap di bawah */
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--bg);
+}
+* { box-sizing: border-box; }
+button, a { font: inherit; }
+.halaman { max-width: 390px; margin-inline: auto; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+
+/* Header */
+.header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg);
+  display: flex; align-items: center; gap: 12px; min-height: 64px; padding-block: 8px; }
+.tombol-kembali { width: 44px; height: 44px; border: 0; border-radius: 22px; background: var(--kartu);
+  display: flex; align-items: center; justify-content: center; box-shadow: var(--bayangan); flex-shrink: 0; cursor: pointer; }
+.judul-header { min-width: 0; display: flex; flex-direction: column; }
+.judul-header .label { font-size: 12px; color: var(--redup); font-weight: 600; }
+.judul-header .nama { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
+
+/* Pilihan varian untuk meninjau dua keadaan lapak. Hanya untuk desain, tidak disimpan. */
+.varian { display: flex; gap: 6px; background: var(--kartu); border-radius: 20px; padding: 4px; }
+.varian button { flex: 1; min-height: 36px; border: 0; border-radius: 16px; background: transparent; color: var(--redup);
+  font-size: 13px; font-weight: 600; cursor: pointer; }
+.varian button[aria-pressed="true"] { background: #fff; color: var(--fg); box-shadow: var(--bayangan); }
+
+/* Ringkasan lapak */
+.lapak { background: var(--kartu); border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.lapak-baris { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.inisial { width: 52px; height: 52px; border-radius: 26px; background: #7A4E2D; color: #fff; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; }
+.lapak-info { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.lapak-info .nama { font-size: 17px; font-weight: 800; overflow-wrap: anywhere; }
+.lapak-info .meta { font-size: 13px; color: var(--redup); }
+.lapak-status { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.chip { height: 26px; padding: 0 10px; border-radius: 13px; display: inline-flex; align-items: center;
+  font-size: 12px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.chip-baru { background: var(--merah-muda); color: var(--merah-teks); }
+.chip-diabaikan { background: var(--netral-muda); color: var(--redup); }
+.chip-ditindak { background: var(--hijau-muda); color: var(--hijau-teks); }
+.chip-tayang { background: #fff; color: var(--hijau-teks); box-shadow: var(--bayangan); }
+.chip-tersembunyi { background: var(--merah-muda); color: var(--merah-teks); }
+.tautan-lapak { min-height: 44px; display: flex; align-items: center; font-size: 14px; font-weight: 600; color: #1A4FC2; }
+
+/* Tiga angka ringkasan */
+.ringkasan { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.angka { background: #fff; border-radius: 18px; box-shadow: var(--bayangan); padding: 12px 10px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.angka .nilai { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.angka .keterangan { font-size: 12px; color: var(--redup); line-height: 1.3; }
+.angka.sorot .nilai { color: var(--merah); }
+.angka-alasan .nilai { font-size: 14px; font-weight: 700; line-height: 1.25; letter-spacing: 0; }
+
+/* Daftar laporan */
+.judul-bagian { display: flex; flex-direction: column; gap: 2px; }
+.judul-bagian h2 { margin: 0; font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
+.judul-bagian p { margin: 0; font-size: 13px; color: var(--redup); }
+
+.laporan { border-radius: 20px; background: var(--kartu); padding: 14px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.laporan-atas { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; min-width: 0; }
+.pelapor { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.pelapor .nama { font-weight: 700; overflow-wrap: anywhere; }
+.pelapor .email { font-size: 12px; color: var(--redup); overflow-wrap: anywhere; }
+.waktu { font-size: 12px; color: var(--redup); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.isi { background: #fff; border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.isi .alasan { font-weight: 700; font-size: 14px; }
+.isi .catatan { font-size: 14px; color: #3D4A5F; overflow-wrap: anywhere; }
+.isi .catatan.kosong { color: var(--redup); font-style: italic; }
+.pernyataan { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--hijau-teks); font-weight: 600; }
+.laporan-aksi { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 36px; }
+.laporan-aksi .keterangan { font-size: 12px; color: var(--redup); }
+.tombol-kecil { min-height: 36px; padding: 0 14px; border: 0; border-radius: 18px; background: #fff; color: var(--fg);
+  box-shadow: var(--bayangan); font-size: 13px; font-weight: 600; cursor: pointer; }
+
+/* Catatan admin */
+.catatan-admin { display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700; }
+.catatan-admin textarea { border: 0; border-radius: 16px; background: var(--kartu); padding: 12px 14px; font: inherit; font-size: 15px; font-weight: 400;
+  color: var(--fg); resize: none; min-height: 72px; outline: none; }
+.catatan-admin textarea:focus-visible { box-shadow: inset 0 0 0 2px #1F5FE6; }
+
+.catatan-kaki { margin: 0; font-size: 12px; color: var(--redup); line-height: 1.5; }
+
+/* Bilah aksi tetap di bawah layar */
+.bilah-aksi { position: fixed; left: 0; right: 0; bottom: 0; background: var(--bg);
+  padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  box-shadow: 0 -4px 16px rgba(18,22,31,.08); }
+.bilah-isi { max-width: 390px; margin-inline: auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 8px; }
+.bilah-isi.satu { grid-template-columns: 1fr; }
+.tombol-utama { height: 54px; border: 0; border-radius: 27px; font-size: 15px; font-weight: 700; cursor: pointer; padding: 0 12px; }
+.tombol-netral { background: var(--kartu); color: var(--fg); box-shadow: var(--bayangan); }
+.tombol-bahaya { background: var(--merah-muda); color: var(--merah); box-shadow: 0 1px 2px rgba(180,35,24,.18), 0 0 0 .5px rgba(180,35,24,.10); }
+.tombol-hijau { background: var(--hijau-muda); color: var(--hijau-teks); }
+
+/* Varian: lapak disembunyikan */
+[data-status="tersembunyi"] .hanya-tayang { display: none; }
+[data-status="tayang"] .hanya-tersembunyi { display: none; }
+
+:focus-visible { outline: 2px solid #1F5FE6; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body data-status="tayang">
+<main class="halaman">
+
+  <header class="header">
+    <button class="tombol-kembali" aria-label="Kembali">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#12161F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="judul-header">
+      <span class="label">Admin · Dilaporkan</span>
+      <span class="nama">Detail laporan</span>
+    </div>
+  </header>
+
+  <div class="varian" role="group" aria-label="Pilih keadaan lapak untuk dilihat">
+    <button type="button" aria-pressed="true" data-pilih="tayang">Lapak tayang</button>
+    <button type="button" aria-pressed="false" data-pilih="tersembunyi">Lapak disembunyikan</button>
+  </div>
+
+  <section class="lapak" aria-label="Lapak yang dilaporkan">
+    <div class="lapak-baris">
+      <div class="inisial" aria-hidden="true">CB</div>
+      <div class="lapak-info">
+        <span class="nama">Cilok Mas Bayu</span>
+        <span class="meta">Daftar 12 Okt · Sragen</span>
+      </div>
+    </div>
+    <div class="lapak-status">
+      <span class="chip chip-tayang hanya-tayang">Tayang</span>
+      <span class="chip chip-tersembunyi hanya-tersembunyi">Disembunyikan</span>
+      <a class="tautan-lapak" href="#">Lihat halaman lapak</a>
+    </div>
+  </section>
+
+  <section class="ringkasan" aria-label="Ringkasan laporan">
+    <div class="angka sorot">
+      <span class="nilai">3</span>
+      <span class="keterangan">Laporan baru</span>
+    </div>
+    <div class="angka">
+      <span class="nilai">5</span>
+      <span class="keterangan">Total semua</span>
+    </div>
+    <div class="angka angka-alasan">
+      <span class="nilai">Status tidak sesuai</span>
+      <span class="keterangan">Alasan terbanyak</span>
+    </div>
+  </section>
+
+  <div class="judul-bagian">
+    <h2>Daftar laporan</h2>
+    <p>Terbaru di atas. Identitas pelapor hanya terlihat admin.</p>
+  </div>
+
+  <article class="laporan" aria-label="Laporan dari Sari">
+    <div class="laporan-atas">
+      <div class="pelapor">
+        <span class="nama">Sari Wulandari</span>
+        <span class="email">sari.wulandari@contoh.invalid</span>
+      </div>
+      <span class="chip chip-baru">Baru</span>
+    </div>
+    <div class="isi">
+      <span class="alasan">Status tidak sesuai</span>
+      <span class="catatan">“Katanya lagi buka, tapi tidak ada di tempat.”</span>
+    </div>
+    <div class="laporan-atas">
+      <span class="pernyataan">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0E7A4F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>
+        Menyatakan melihat sendiri
+      </span>
+      <span class="waktu">27 Okt · 19.12 WIB</span>
+    </div>
+    <div class="laporan-aksi">
+      <span class="keterangan">Belum ditindak</span>
+      <button class="tombol-kecil" type="button">Abaikan</button>
+    </div>
+  </article>
+
+  <article class="laporan" aria-label="Laporan dari Dimas">
+    <div class="laporan-atas">
+      <div class="pelapor">
+        <span class="nama">Dimas Prasetyo</span>
+        <span class="email">dimasp.88@contoh.invalid</span>
+      </div>
+      <span class="chip chip-baru">Baru</span>
+    </div>
+    <div class="isi">
+      <span class="alasan">Lapak tidak ada / akun iseng</span>
+      <span class="catatan kosong">Tanpa catatan</span>
+    </div>
+    <div class="laporan-atas">
+      <span class="pernyataan">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0E7A4F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>
+        Menyatakan melihat sendiri
+      </span>
+      <span class="waktu">26 Okt · 08.40 WIB</span>
+    </div>
+    <div class="laporan-aksi">
+      <span class="keterangan">Belum ditindak</span>
+      <button class="tombol-kecil" type="button">Abaikan</button>
+    </div>
+  </article>
+
+  <article class="laporan" aria-label="Laporan dari Budi">
+    <div class="laporan-atas">
+      <div class="pelapor">
+        <span class="nama">Budi Santoso</span>
+        <span class="email">budi.santoso77@contoh.invalid</span>
+      </div>
+      <span class="chip chip-baru">Baru</span>
+    </div>
+    <div class="isi">
+      <span class="alasan">Status tidak sesuai</span>
+      <span class="catatan">“Jam 10 masih tutup, padahal tertulis buka.”</span>
+    </div>
+    <div class="laporan-atas">
+      <span class="pernyataan">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0E7A4F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>
+        Menyatakan melihat sendiri
+      </span>
+      <span class="waktu">25 Okt · 10.31 WIB</span>
+    </div>
+    <div class="laporan-aksi">
+      <span class="keterangan">Belum ditindak</span>
+      <button class="tombol-kecil" type="button">Abaikan</button>
+    </div>
+  </article>
+
+  <article class="laporan" aria-label="Laporan dari Rina, sudah diabaikan">
+    <div class="laporan-atas">
+      <div class="pelapor">
+        <span class="nama">Rina Amelia</span>
+        <span class="email">rina.amelia@yahoo.com</span>
+      </div>
+      <span class="chip chip-diabaikan">Diabaikan</span>
+    </div>
+    <div class="isi">
+      <span class="alasan">Tempat salah</span>
+      <span class="catatan">“Alamatnya di pasar lama.”</span>
+    </div>
+    <div class="laporan-atas">
+      <span class="pernyataan">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0E7A4F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>
+        Menyatakan melihat sendiri
+      </span>
+      <span class="waktu">20 Okt · 16.05 WIB</span>
+    </div>
+    <div class="laporan-aksi">
+      <span class="keterangan">Diabaikan admin · 21 Okt</span>
+    </div>
+  </article>
+
+  <article class="laporan" aria-label="Laporan dari Tono, sudah diabaikan">
+    <div class="laporan-atas">
+      <div class="pelapor">
+        <span class="nama">Tono Haryanto</span>
+        <span class="email">tono.haryanto@contoh.invalid</span>
+      </div>
+      <span class="chip chip-diabaikan">Diabaikan</span>
+    </div>
+    <div class="isi">
+      <span class="alasan">Status tidak sesuai</span>
+      <span class="catatan kosong">Tanpa catatan</span>
+    </div>
+    <div class="laporan-atas">
+      <span class="pernyataan">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0E7A4F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>
+        Menyatakan melihat sendiri
+      </span>
+      <span class="waktu">18 Okt · 13.22 WIB</span>
+    </div>
+    <div class="laporan-aksi">
+      <span class="keterangan">Diabaikan admin · 19 Okt</span>
+    </div>
+  </article>
+
+  <label class="catatan-admin">
+    Catatan admin (opsional)
+    <textarea rows="3" maxlength="300" placeholder="Contoh: sudah dicek lewat telepon, lapak memang buka sore hari."></textarea>
+  </label>
+
+  <p class="catatan-kaki">
+    Sembunyikan lapak: lapak hilang dari publik, data dan pengikut tetap, dan semua laporan aktif ditandai ditindak.
+    Tampilkan lagi: laporan yang ditandai ditindak dikembalikan sebagai diabaikan dan pemilik diberi tahu lewat email.
+    Satu akun hanya bisa melaporkan lapak yang sama satu kali per 30 hari.
+  </p>
+
+</main>
+
+<nav class="bilah-aksi" aria-label="Aksi lapak">
+  <div class="bilah-isi hanya-tayang">
+    <button class="tombol-utama tombol-netral" type="button">Abaikan semua</button>
+    <button class="tombol-utama tombol-bahaya" type="button">Sembunyikan lapak</button>
+  </div>
+  <div class="bilah-isi satu hanya-tersembunyi">
+    <button class="tombol-utama tombol-hijau" type="button">Tampilkan lagi</button>
+  </div>
+</nav>
+
+<script>
+// Hanya untuk meninjau desain: berganti antara keadaan tayang dan disembunyikan
+document.querySelectorAll('[data-pilih]').forEach((tombol) => {
+  tombol.addEventListener('click', () => {
+    const status = tombol.getAttribute('data-pilih');
+    document.body.setAttribute('data-status', status);
+    document.querySelectorAll('[data-pilih]').forEach((t) =>
+      t.setAttribute('aria-pressed', String(t === tombol)));
+  });
+});
+</script>
+</body>
+</html>

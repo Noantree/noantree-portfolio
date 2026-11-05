@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Hasil cari</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button[style^="height"]:not([disabled]):not([data-chip]):not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="#1F5FE6"]):not([style*="rgba(255,255,255"]),a[style^="height"]:not([data-chip]):not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="background: #1F5FE6"]),a[aria-label][style^="width: 4"]:not([aria-label="Akun saya"]){box-shadow:0 1px 2px rgba(18,22,31,.10),0 0 0 .5px rgba(18,22,31,.06)}
+a{color:#1A4FC2}a:hover{color:#12161F}
+</style>
+</helmet>
+<div style="width: 390px; height: 1000px; box-sizing: border-box; background: #FFFFFF; color: #12161F; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 12px; padding: 12px 16px 24px; overflow: hidden;">
+<div style="display: flex; align-items: center; gap: 8px;">
+<a href="Visual-Beranda.dc.html" aria-label="Kembali" style="width: 44px; height: 44px; flex-shrink: 0; border-radius: 22px; background: #F4F6FA; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#12161F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<div style="display: flex; gap: 8px; overflow: hidden;">
+<a href="Visual-Urutkan.dc.html" data-chip style="height: 44px; padding: 0 16px; border-radius: 22px; background: #12161F; color: #FFFFFF; display: flex; align-items: center; text-decoration: none; font-size: 13px; font-weight: 600; white-space: nowrap;">Terdekat ▾</a>
+<a href="Visual-Wilayah.dc.html" data-chip style="height: 44px; padding: 0 16px; border-radius: 22px; background: #F4F6FA; color: #12161F; display: flex; align-items: center; text-decoration: none; font-size: 13px; font-weight: 600; white-space: nowrap;">Sragen ▾</a></div>
+</div>
+<label style="height: 48px; border-radius: 24px; background: #F4F6FA; box-shadow: inset 0 0 0 2px #1F5FE6; display: flex; align-items: center; gap: 10px; padding: 0 16px;">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#12161F" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+<span style="position: absolute; left: -9999px;">Cari lapak</span>
+<input type="search" value="bakso" style="flex-grow: 1; border: 0; background: transparent; font-family: inherit; font-size: 16px; color: #12161F; outline: none;">
+</label>
+<span style="font-size: 15px;">Hasil “bakso” di <b>Kab. Sragen</b> · 6 lapak</span>
+<span style="font-size: 16px; font-weight: 700; margin-top: 4px;">Lagi buka</span>
+<sc-for list="{{buka}}" as="k" hint-placeholder-count="2">
+<a href="Visual-Detail.dc.html" style="display: flex; gap: 14px; padding: 14px; border-radius: 20px; background: #F4F6FA; text-decoration: none; color: #12161F;">
+<div style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 24px; background: {{k.warna}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800;">{{k.inisial}}</div>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;"><span style="font-size: 16px; font-weight: 700;">{{k.nama}}</span><span style="display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; border-radius: 12px; background: #E4F5EC; color: #0E7A4F; font-size: 12px; font-weight: 700; white-space: nowrap;"><span style="width: 8px; height: 8px; border-radius: 4px; background: #16A86A;"></span>Lagi buka</span></div>
+<span style="font-size: 13px; color: #5B6472;">{{k.info}}</span>
+</div>
+</a>
+</sc-for>
+<span style="font-size: 16px; font-weight: 700; margin-top: 4px;">Biasanya buka jam segini</span>
+<a href="Visual-DetailBiasa.dc.html" style="display: flex; gap: 14px; padding: 14px; border-radius: 20px; background: #FFFFFF; box-shadow: inset 0 0 0 1.5px #D5DAE2; text-decoration: none; color: #12161F;">
+<div style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 24px; background: #3D4A5F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; opacity: 0.85;">BW</div>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;"><span style="font-size: 16px; font-weight: 700;">Bakso Kuah Bu Wati</span><span style="display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; border-radius: 12px; background: #EEF0F4; color: #5B6472; font-size: 12px; font-weight: 700; white-space: nowrap;"><span style="width: 8px; height: 8px; box-sizing: border-box; border-radius: 4px; border: 2px dashed #8A93A1;"></span>Biasanya buka</span></div>
+<span style="font-size: 13px; color: #5B6472;">Biasanya di Depan Pasar Gemolong · 10.00–15.00</span>
+</div>
+</a>
+<span style="font-size: 16px; font-weight: 700; margin-top: 4px;">Sedang tutup</span>
+<sc-for list="{{tutup}}" as="k" hint-placeholder-count="2">
+<a href="Visual-Detail.dc.html" style="display: flex; gap: 14px; padding: 14px; border-radius: 20px; background: #FFFFFF; box-shadow: inset 0 0 0 1.5px #E3E7EE; text-decoration: none; color: #12161F;">
+<div style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 24px; background: {{k.warna}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; opacity: 0.7;">{{k.inisial}}</div>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;"><span style="font-size: 16px; font-weight: 700;">{{k.nama}}</span><span style="display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; border-radius: 12px; background: #EEF0F4; color: #5B6472; font-size: 12px; font-weight: 700;"><span style="width: 8px; height: 8px; border-radius: 4px; box-shadow: inset 0 0 0 2px #8A93A1;"></span>Tutup</span></div>
+<span style="font-size: 13px; color: #5B6472;">{{k.info}}</span>
+</div>
+</a>
+</sc-for>
+<button style="height: 52px; border: 0; border-radius: 26px; background: #EAF1FE; color: #1A4FC2; font-family: inherit; font-size: 15px; font-weight: 700;">Cari “bakso” di semua wilayah (+4)</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1000}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+buka: [
+{ nama: 'Bakso Pak Slamet', inisial: 'BS', warna: '#1F5FE6', info: 'Depan Pasar Sragen · 0,4 km · sampai 14.00' },
+{ nama: 'Bakso Mbak Rini', inisial: 'BR', warna: '#9C2F5B', info: 'Depan Masjid Karangmalang · 1,8 km · sampai 20.00' }
+],
+tutup: [
+{ nama: 'Bakso Bakar Mas Didit', inisial: 'BD', warna: '#7A4E2D', info: 'Jadwal Senin–Sabtu 16.00–21.00' },
+{ nama: 'Bakso & Soto Pak Gino', inisial: 'BG', warna: '#24408E', info: 'Jadwal tidak tetap' }
+]
+};
+}
+}
+</script>
+</body>
+</html>

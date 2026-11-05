@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Panduan visual noantree</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button[style^="height"]:not([disabled]):not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="#1F5FE6"]):not([style*="rgba(255,255,255"]),a[style^="height"]:not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="background: #1F5FE6"]),a[aria-label][style^="width: 4"]:not([aria-label="Akun saya"]){box-shadow:0 1px 2px rgba(18,22,31,.10),0 0 0 .5px rgba(18,22,31,.06)}
+a{color:#1F5FE6}a:hover{color:#1A4FC2}
+</style>
+</helmet>
+<div style="width: 900px; height: 1120px; box-sizing: border-box; padding: 56px; background: #FFFFFF; color: #12161F; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 40px;">
+<div style="display: flex; align-items: center; gap: 20px;">
+<img src="/_blob/9d8f4b36fc58994b6648df95a114a0bf" alt="Logo noantree" width="72" height="72" style="width: 72px; height: 72px; border-radius: 18px;">
+<div style="display: flex; flex-direction: column; gap: 4px;">
+<span style="font-size: 32px; font-weight: 800; letter-spacing: -0.03em;">noantree</span>
+<span style="font-size: 16px; color: #5B6472;">Biar pelanggan tahu kamu lagi buka.</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<span style="font-size: 20px; font-weight: 700;">Warna</span>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+<sc-for list="{{warna}}" as="w" hint-placeholder-count="8">
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<div style="height: 72px; border-radius: 16px; background: {{w.hex}}; box-shadow: inset 0 0 0 1px rgba(18,22,31,0.06);"></div>
+<span style="font-size: 14px; font-weight: 700;">{{w.nama}}</span>
+<span style="font-size: 13px; color: #5B6472;">{{w.hex}} · {{w.guna}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px;">
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<span style="font-size: 20px; font-weight: 700;">Huruf: Plus Jakarta Sans</span>
+<span style="font-size: 32px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05;">Status besar 32</span>
+<span style="font-size: 20px; font-weight: 700; letter-spacing: -0.01em;">Judul 20</span>
+<span style="font-size: 16px; line-height: 1.5;">Isi 16. Bakso urat, mie ayam, bisa bungkus.</span>
+<span style="font-size: 13px; color: #5B6472;">Keterangan 13 · 0,4 km · sampai 14.00</span>
+<span style="font-size: 13px; color: #5B6472; line-height: 1.5;">Maksimal 4 ukuran. Teks utama minimal 16 px dengan tinta penuh; abu hanya untuk keterangan.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<span style="font-size: 20px; font-weight: 700;">Status</span>
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+<span style="display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 16px; background: #E4F5EC; color: #0E7A4F; font-size: 14px; font-weight: 700;"><span style="width: 10px; height: 10px; border-radius: 5px; background: #16A86A;"></span>Lagi buka</span>
+<span style="display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 16px; background: #FDEEDF; color: #A8500C; font-size: 14px; font-weight: 700;"><span style="width: 10px; height: 10px; border-radius: 5px; background: #F08A24;"></span>Habis</span>
+<span style="display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 16px; background: #EEF0F4; color: #5B6472; font-size: 14px; font-weight: 700;"><span style="width: 10px; height: 10px; border-radius: 5px; box-shadow: inset 0 0 0 2px #8A93A1;"></span>Tutup</span>
+<span style="display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 16px; background: #EEF0F4; color: #5B6472; font-size: 14px; font-weight: 700;"><span style="width: 10px; height: 10px; box-sizing: border-box; border-radius: 5px; border: 2px dashed #8A93A1;"></span>Biasanya buka</span>
+</div>
+<span style="font-size: 13px; color: #5B6472; line-height: 1.5;">"Biasanya buka" dihitung dari jadwal, belum dikonfirmasi pemilik lapak. Selalu tampil terpisah di bawah "Lagi buka".</span>
+<span style="font-size: 13px; color: #5B6472; line-height: 1.5;">Titik bulat di status mengulang titik pada logo: tanda "hidup". Selalu disertai tulisan, tidak hanya warna.</span>
+<span style="font-size: 20px; font-weight: 700; margin-top: 8px;">Tombol</span>
+<button style="height: 56px; border: 0; border-radius: 28px; background: #1F5FE6; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 700;">Tombol utama</button>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+<button style="height: 48px; border: 0; border-radius: 24px; background: #EAF1FE; color: #1A4FC2; font-family: inherit; font-size: 15px; font-weight: 700;">Tombol kedua</button>
+<button style="height: 48px; border: 0; border-radius: 24px; background: #F4F6FA; color: #12161F; font-family: inherit; font-size: 15px; font-weight: 600;">Tombol netral</button>
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<span style="font-size: 20px; font-weight: 700;">Aturan singkat</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 40px; font-size: 15px; line-height: 1.5;">
+<span>Satu dasar putih, satu tinta, satu aksen biru.</span>
+<span>Biru hanya untuk aksi dan merek; hijau hanya untuk "lagi buka".</span>
+<span>Permukaan dipisah dengan beda nada. Bayangan tipis hanya di tombol lembut, bukan biru solid, chip, label, atau kartu.</span>
+<span>Semua tombol bulat penuh; kartu sudut 20 px.</span>
+<span>Target sentuh minimal 44 px (termasuk chip filter), tombol utama pedagang 64 px.</span>
+<span>Tanpa gradasi, glow, emoji, atau ikon di kotak berwarna.</span>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":900,"height":1120}}'>
+class Component extends DCLogic {
+renderVals() {
+return { warna: [
+{ nama: 'Biru noantree', hex: '#1F5FE6', guna: 'aksi, merek' },
+{ nama: 'Biru tekan', hex: '#1A4FC2', guna: 'ditekan, teks link' },
+{ nama: 'Biru muda', hex: '#EAF1FE', guna: 'tombol kedua' },
+{ nama: 'Tinta', hex: '#12161F', guna: 'teks utama' },
+{ nama: 'Abu teks', hex: '#5B6472', guna: 'keterangan' },
+{ nama: 'Latar kartu', hex: '#F4F6FA', guna: 'permukaan' },
+{ nama: 'Hijau buka', hex: '#16A86A', guna: 'status buka' },
+{ nama: 'Oranye habis', hex: '#F08A24', guna: 'status habis' }
+] };
+}
+}
+</script>
+</body>
+</html>

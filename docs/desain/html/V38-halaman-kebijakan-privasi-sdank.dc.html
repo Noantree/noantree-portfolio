@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Kebijakan Privasi</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button[style^="height"]:not([disabled]):not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="#1F5FE6"]):not([style*="rgba(255,255,255"]),a[style^="height"]:not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="background: #1F5FE6"]),a[aria-label][style^="width: 4"]:not([aria-label="Akun saya"]){box-shadow:0 1px 2px rgba(18,22,31,.10),0 0 0 .5px rgba(18,22,31,.06)}
+a{color:#1A4FC2}a:hover{color:#12161F}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; color: #12161F; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 14px; padding: 0 20px 24px; overflow: hidden;">
+<div style="height: 64px; display: flex; align-items: center; gap: 12px;">
+<a href="Visual-AkunPelanggan.dc.html" aria-label="Kembali" style="width: 44px; height: 44px; border-radius: 22px; background: #F4F6FA; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#12161F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<div style="display: flex; gap: 6px; background: #F4F6FA; border-radius: 22px; padding: 4px;">
+<span style="height: 36px; padding: 0 14px; border-radius: 18px; background: #FFFFFF; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Privasi</span>
+<span style="height: 36px; padding: 0 14px; border-radius: 18px; display: flex; align-items: center; font-size: 13px; font-weight: 600; color: #5B6472;">Syarat &amp; Ketentuan</span>
+</div>
+</div>
+<span style="font-size: 28px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;">Kebijakan Privasi</span>
+<span style="font-size: 13px; color: #5B6472;">Berlaku sejak [tanggal] · versi [1.0]</span>
+<div style="border-radius: 18px; background: #F4F6FA; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px;">
+<span style="font-size: 14px; font-weight: 700;">Ringkasnya</span>
+<span style="font-size: 14px; color: #3D4A5F; line-height: 1.5;">[Ringkasan 3 kalimat dengan bahasa sehari-hari: data apa yang disimpan, untuk apa, dan cara menghapusnya.]</span>
+</div>
+<sc-for list="{{bagian}}" as="b" hint-placeholder-count="5">
+<div style="display: flex; flex-direction: column; gap: 4px;">
+<span style="font-size: 16px; font-weight: 700;">{{b.judul}}</span>
+<span style="font-size: 14px; color: #3D4A5F; line-height: 1.55;">{{b.isi}}</span>
+</div>
+</sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return { bagian: [
+{ judul: '1. Data yang kami kumpulkan', isi: '[Semua pengguna: nama, email, dan foto profil (dari Google atau diisi sendiri). Pemilik lapak: profil, tempat, jadwal, foto lapak, dan riwayat status.]' },
+{ judul: '2. Untuk apa data dipakai', isi: '[Menampilkan lapak dan status, mengikuti lapak, menangani laporan.]' },
+{ judul: '3. Lokasi', isi: '[Lokasi pelanggan hanya dipakai untuk mengurutkan dan tidak disimpan.]' },
+{ judul: '4. Hak kamu', isi: '[Melihat, mengubah, dan menghapus data dari menu Akun.]' },
+{ judul: '5. Kontak', isi: '[Email dan WhatsApp admin untuk pertanyaan privasi.]' }
+] };
+}
+}
+</script>
+</body>
+</html>

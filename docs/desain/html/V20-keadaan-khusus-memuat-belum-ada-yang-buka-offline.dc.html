@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Keadaan khusus</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button[style^="height"]:not([disabled]):not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="#1F5FE6"]):not([style*="rgba(255,255,255"]),a[style^="height"]:not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="background: #1F5FE6"]),a[aria-label][style^="width: 4"]:not([aria-label="Akun saya"]){box-shadow:0 1px 2px rgba(18,22,31,.10),0 0 0 .5px rgba(18,22,31,.06)}
+a{color:#1A4FC2}a:hover{color:#12161F}
+</style>
+</helmet>
+<div style="width: 390px; height: 1000px; box-sizing: border-box; background: #FFFFFF; color: #12161F; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 22px; padding: 20px 16px;">
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<span style="font-size: 13px; font-weight: 700; color: #5B6472;">Memuat daftar</span>
+<sc-for list="{{kerangka}}" as="s" hint-placeholder-count="2">
+<div style="display: flex; gap: 14px; padding: 14px; border-radius: 20px; background: #F4F6FA;" aria-hidden="true">
+<div style="width: 52px; height: 52px; border-radius: 26px; background: #E3E7EE;"></div>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 8px; justify-content: center;">
+<div style="height: 12px; width: 60%; border-radius: 6px; background: #E3E7EE;"></div>
+<div style="height: 10px; width: 85%; border-radius: 5px; background: #E9ECF1;"></div>
+</div>
+</div>
+</sc-for>
+<span role="status" style="font-size: 13px; color: #5B6472;">Memuat lapak…</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<span style="font-size: 13px; font-weight: 700; color: #5B6472;">Ada lapak, tapi belum ada yang buka</span>
+<div style="border-radius: 24px; background: #F4F6FA; padding: 24px 20px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
+<span style="font-size: 18px; font-weight: 800; letter-spacing: -0.01em;">Belum ada yang buka di Kecamatan Gesi</span>
+<span style="font-size: 14px; color: #3D4A5F; line-height: 1.5;">3 lapak di sini biasanya mulai buka pukul 16.00. Ikuti supaya tahu saat mereka buka. Kalau belum ada lapak sama sekali, lihat V53.</span>
+<div style="display: flex; gap: 8px; margin-top: 4px; flex-wrap: wrap;">
+<button style="height: 44px; padding: 0 18px; border: 0; border-radius: 22px; background: #1F5FE6; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700;">Lihat seluruh Kab. Sragen</button>
+<button style="height: 44px; padding: 0 18px; border: 0; border-radius: 22px; background: #FFFFFF; color: #1A4FC2; font-family: inherit; font-size: 14px; font-weight: 700;">Ajak lapak langgananmu</button>
+<span style="font-size: 12px; color: #5B6472; line-height: 1.45;">Membuka menu bagikan HP dengan pesan siap kirim berisi link noantree.id/daftar.</span>
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<span style="font-size: 13px; font-weight: 700; color: #5B6472;">Sinyal putus</span>
+<div role="status" style="border-radius: 18px; background: #EEF0F4; box-shadow: inset 0 0 0 1.5px #D5DAE2; color: #12161F; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+<span style="font-size: 14px; line-height: 1.4;">Tidak ada sinyal. Menampilkan data terakhir (09.42).</span>
+<button style="height: 40px; padding: 0 14px; border: 0; border-radius: 20px; background: #FFFFFF; color: #12161F; font-family: inherit; font-size: 13px; font-weight: 700; white-space: nowrap;">Coba lagi</button>
+</div>
+<div role="alert" style="border-radius: 18px; background: #FDEEDF; padding: 14px 16px; font-size: 14px; color: #6B3A0C; line-height: 1.45;"><b>Belum terkirim.</b> Status “Mulai buka” akan dikirim otomatis begitu sinyal kembali.</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<span style="font-size: 13px; font-weight: 700; color: #5B6472;">Periksa link gagal</span>
+<div role="alert" style="border-radius: 18px; background: #FDECEA; padding: 14px 16px; font-size: 14px; color: #7A1A12; line-height: 1.45;">Link ini bukan dari Google Maps. Salin ulang dari tombol <b>Bagikan</b> di aplikasi Google Maps.</div>
+<div role="alert" style="border-radius: 18px; background: #F4F6FA; padding: 14px 16px; font-size: 14px; color: #3D4A5F; line-height: 1.45;">Batas periksa hari ini habis (10 dari 10). Tempat tetap bisa disimpan tanpa titik; coba periksa lagi besok.</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1000}}'>
+class Component extends DCLogic {
+renderVals() { return { kerangka: [1, 2] }; }
+}
+</script>
+</body>
+</html>

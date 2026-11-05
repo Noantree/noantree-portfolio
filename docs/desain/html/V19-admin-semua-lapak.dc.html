@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Admin, semua lapak</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button[style^="height"]:not([disabled]):not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="#1F5FE6"]):not([style*="rgba(255,255,255"]),a[style^="height"]:not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="background: #1F5FE6"]),a[aria-label][style^="width: 4"]:not([aria-label="Akun saya"]){box-shadow:0 1px 2px rgba(18,22,31,.10),0 0 0 .5px rgba(18,22,31,.06)}
+a{color:#1A4FC2}a:hover{color:#12161F}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; color: #12161F; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 14px; padding: 0 16px 24px;">
+<div style="height: 64px; display: flex; align-items: center; gap: 10px;">
+<img src="/_blob/9d8f4b36fc58994b6648df95a114a0bf" alt="" width="32" height="32" style="width: 32px; height: 32px; border-radius: 9px;">
+<span style="font-size: 20px; font-weight: 800; letter-spacing: -0.03em;">Admin</span>
+</div>
+<div style="display: flex; gap: 8px; overflow: hidden;">
+<a href="Visual-AdminLapor.dc.html" style="height: 38px; padding: 0 14px; border-radius: 19px; background: #F4F6FA; color: #12161F; display: flex; align-items: center; text-decoration: none; font-size: 13px; font-weight: 600; white-space: nowrap;">Dilaporkan · 2</a>
+<a href="Visual-AdminSemua.dc.html" style="height: 38px; padding: 0 14px; border-radius: 19px; background: #12161F; color: #FFFFFF; display: flex; align-items: center; text-decoration: none; font-size: 13px; font-weight: 600; white-space: nowrap;">Semua lapak</a>
+<a href="Visual-AdminSembunyi.dc.html" style="height: 38px; padding: 0 14px; border-radius: 19px; background: #F4F6FA; color: #12161F; display: flex; align-items: center; text-decoration: none; font-size: 13px; font-weight: 600; white-space: nowrap;">Disembunyikan · 1</a>
+</div>
+<label style="height: 48px; border-radius: 24px; background: #F4F6FA; display: flex; align-items: center; gap: 10px; padding: 0 16px;">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B6472" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+<span style="position: absolute; left: -9999px;">Cari lapak</span>
+<input type="search" name="cari" autocomplete="off" placeholder="Cari nama lapak atau email…" style="flex-grow: 1; border: 0; background: transparent; font-family: inherit; font-size: 16px;">
+</label>
+<span style="font-size: 13px; color: #5B6472;">48 lapak · terbaru di atas · tidak perlu dicek satu per satu</span>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<sc-for list="{{semua}}" as="p" hint-placeholder-count="5">
+<div style="display: flex; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 18px; background: #F4F6FA;">
+<div style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 20px; background: {{p.warna}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800;">{{p.inisial}}</div>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+<span style="font-size: 15px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{p.nama}}</span>
+<span style="font-size: 12px; color: #5B6472;">{{p.info}}</span>
+</div>
+<button aria-label="Sembunyikan {{p.nama}}" style="height: 34px; padding: 0 12px; border: 0; border-radius: 17px; background: #FDECEA; color: #B42318; font-family: inherit; font-size: 13px; font-weight: 700;">Sembunyikan</button>
+</div>
+</sc-for>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return { semua: [
+{ nama: 'aaaa', inisial: 'AA', warna: '#3D4A5F', info: 'Daftar 25 Okt 08.02 · Sukoharjo' },
+{ nama: 'Es Dawet Bu Sri', inisial: 'ES', warna: '#9C2F5B', info: 'Daftar 25 Okt 07.40 · Masaran' },
+{ nama: 'Bakso Pak Slamet', inisial: 'BS', warna: '#1F5FE6', info: 'Daftar 25 Okt 06.12 · Sragen' },
+{ nama: 'Cukur Keliling Mas Joko', inisial: 'CJ', warna: '#24408E', info: 'Daftar 20 Okt · Sidoharjo' },
+{ nama: 'Cilok Mas Bayu', inisial: 'CB', warna: '#7A4E2D', info: 'Daftar 12 Okt · Sragen' }
+] };
+}
+}
+</script>
+</body>
+</html>

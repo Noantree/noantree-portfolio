@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Laporkan lapak</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button[style^="height"]:not([disabled]):not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="#1F5FE6"]):not([style*="rgba(255,255,255"]),a[style^="height"]:not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="background: #1F5FE6"]),a[aria-label][style^="width: 4"]:not([aria-label="Akun saya"]){box-shadow:0 1px 2px rgba(18,22,31,.10),0 0 0 .5px rgba(18,22,31,.06)}
+a{color:#1A4FC2}a:hover{color:#12161F}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #5E6573; color: #12161F; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: flex; flex-direction: column; justify-content: flex-end;">
+<div role="dialog" aria-label="Laporkan lapak" style="background: #FFFFFF; border-radius: 28px 28px 0 0; padding: 12px 20px 28px; display: flex; flex-direction: column; gap: 12px;">
+<div style="width: 40px; height: 5px; border-radius: 3px; background: #D5DAE2; align-self: center;"></div>
+<span style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin-top: 4px;">Laporkan Cilok Mas Bayu</span>
+<span style="font-size: 14px; color: #5B6472;">Pilih satu alasan</span>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<sc-for list="{{alasan}}" as="a" hint-placeholder-count="5">
+<label style="display: flex; align-items: center; gap: 12px; min-height: 50px; padding: 0 16px; border-radius: 16px; background: {{a.bg}}; box-shadow: {{a.ring}}; font-size: 15px; font-weight: {{a.berat}};"><input type="radio" name="alasan" checked="{{a.pilih}}" style="width: 20px; height: 20px; accent-color: #1F5FE6;">{{a.teks}}</label>
+</sc-for>
+</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700;">Ceritakan singkat (opsional)
+<textarea name="catatan" rows="2" maxlength="200" autocomplete="off" placeholder="Contoh: katanya lagi buka, tapi tidak ada di tempat…" style="border: 0; border-radius: 16px; background: #F4F6FA; padding: 12px 16px; font-family: inherit; font-size: 16px; font-weight: 400; resize: none;"></textarea>
+</label>
+<label style="display: flex; align-items: flex-start; gap: 12px; font-size: 14px; font-weight: 500; line-height: 1.5;"><input type="checkbox" name="pernyataan" style="width: 20px; height: 20px; margin: 1px 0 0; accent-color: #1F5FE6; flex-shrink: 0;">Saya melaporkan berdasarkan kondisi yang saya lihat sendiri</label>
+<button disabled style="height: 54px; border: 0; border-radius: 27px; background: #1F5FE6; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 700; opacity: 0.45;">Kirim laporan</button>
+<span style="font-size: 12px; color: #5B6472; line-height: 1.5; text-align: center;">Pemilik lapak tidak tahu siapa yang melapor · 1 laporan per lapak per 30 hari</span>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const t = ['Lapak tidak ada / akun iseng', 'Status tidak sesuai', 'Tempat salah', 'Konten tidak pantas', 'Lainnya'];
+return { alasan: t.map((teks) => ({ teks, pilih: false, bg: '#F4F6FA', ring: 'none', berat: 500 })) };
+}
+}
+</script>
+</body>
+</html>

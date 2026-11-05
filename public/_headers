@@ -1,0 +1,8 @@
+# Header untuk berkas statis di Cloudflare (https://developers.cloudflare.com/workers/static-assets/headers/).
+# Staging, alamat workers.dev, dan pratinjau per branch tidak boleh masuk mesin pencari. noantree.id tidak tersentuh
+# aturan di bawah. Halaman lapak (/:slug) dibuat Worker, jadi header yang sama dipasang di worker/index.ts.
+https://staging.noantree.id/*
+  X-Robots-Tag: noindex, nofollow
+
+https://:sub.akun-anda.workers.dev/*
+  X-Robots-Tag: noindex, nofollow

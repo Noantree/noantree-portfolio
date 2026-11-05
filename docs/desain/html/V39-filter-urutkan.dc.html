@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Urutkan</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button[style^="height"]:not([disabled]):not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="#1F5FE6"]):not([style*="rgba(255,255,255"]),a[style^="height"]:not([style^="height: 36px"]):not([style^="height: 38px"]):not([style*="background: #1F5FE6"]),a[aria-label][style^="width: 4"]:not([aria-label="Akun saya"]){box-shadow:0 1px 2px rgba(18,22,31,.10),0 0 0 .5px rgba(18,22,31,.06)}
+a{color:#1A4FC2}a:hover{color:#12161F}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #5E6573; color: #12161F; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: flex; flex-direction: column; justify-content: flex-end;">
+<div role="dialog" aria-label="Urutkan" style="background: #FFFFFF; border-radius: 28px 28px 0 0; padding: 12px 20px 28px; display: flex; flex-direction: column; gap: 12px;">
+<div style="width: 40px; height: 5px; border-radius: 3px; background: #D5DAE2; align-self: center;"></div>
+<span style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin-top: 4px;">Urutkan</span>
+<label style="display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 0 16px; border-radius: 18px; background: #EAF1FE; box-shadow: inset 0 0 0 2px #1F5FE6;">
+<input type="radio" name="urut" checked style="width: 22px; height: 22px; accent-color: #1F5FE6;">
+<span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 16px; font-weight: 700;">Terdekat</span><span style="font-size: 13px; color: #3D4A5F;">Perlu izin lokasi. Tanpa izin, otomatis Terpopuler. Lapak tanpa titik di bawah.</span></span>
+</label>
+<label style="display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 0 16px; border-radius: 18px; background: #F4F6FA;">
+<input type="radio" name="urut" style="width: 22px; height: 22px; accent-color: #1F5FE6;">
+<span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 16px; font-weight: 700;">Terpopuler</span><span style="font-size: 13px; color: #5B6472;">Yang pengikutnya paling banyak di atas</span></span>
+</label>
+<label style="display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 0 16px; border-radius: 18px; background: #F4F6FA;">
+<input type="radio" name="urut" style="width: 22px; height: 22px; accent-color: #1F5FE6;">
+<span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 16px; font-weight: 700;">Abjad</span><span style="font-size: 13px; color: #5B6472;">Nama lapak dari A sampai Z</span></span>
+</label>
+<a href="Visual-Beranda.dc.html" style="margin-top: 6px; height: 56px; border-radius: 28px; background: #1F5FE6; color: #FFFFFF; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 16px; font-weight: 700;">Terapkan</a>
+<span style="font-size: 12px; color: #5B6472; text-align: center;">Kelompok “Lagi buka” selalu di atas “Biasanya buka”, apa pun urutannya.</span>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
